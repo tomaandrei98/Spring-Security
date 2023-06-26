@@ -2,7 +2,6 @@ package com.example.security;
 
 import com.example.security.auth.AuthenticationService;
 import com.example.security.auth.RegisterRequest;
-import com.example.security.user.Role;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -27,7 +26,7 @@ public class SecurityApplication {
                     .password("password")
                     .role(ADMIN)
                     .build();
-            System.out.println("Admin token: " + service.register(admin).getToken());
+            System.out.println("Admin token: " + service.register(admin).getAccessToken());
 
             var manager = RegisterRequest.builder()
                     .firstName("Manager")
@@ -36,7 +35,7 @@ public class SecurityApplication {
                     .password("password")
                     .role(MANAGER)
                     .build();
-            System.out.println("Manager token: " + service.register(manager).getToken());
+            System.out.println("Manager token: " + service.register(manager).getAccessToken());
 
             var user = RegisterRequest.builder()
                     .firstName("User")
@@ -45,7 +44,7 @@ public class SecurityApplication {
                     .password("password")
                     .role(USER)
                     .build();
-            System.out.println("User token: " + service.register(user).getToken());
+            System.out.println("User token: " + service.register(user).getAccessToken());
         };
     }
 }
